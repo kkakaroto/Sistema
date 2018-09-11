@@ -14,4 +14,22 @@ object frmPrincipal: TfrmPrincipal
   Position = poDesktopCenter
   PixelsPerInch = 96
   TextHeight = 13
+  object Panel1: TPanel
+    Left = 0
+    Top = 0
+    Width = 763
+    Height = 57
+    Align = alTop
+    Caption = 'Panel1'
+    TabOrder = 0
+    object sbCliente: TSpeedButton
+      Left = 24
+      Top = 16
+      Width = 65
+      Height = 22
+      Caption = 'Cliente'
+      Flat = True
+      OnClick = sbClienteClick
+    end
+  end
 end

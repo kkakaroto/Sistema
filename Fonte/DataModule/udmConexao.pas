@@ -9,7 +9,7 @@ uses
   FireDAC.Phys.FBDef, FireDAC.VCLUI.Wait, Data.DB, FireDAC.Comp.Client;
 
 type
-  TDataModule1 = class(TDataModule)
+  TdmConexao = class(TDataModule)
     FDConnection: TFDConnection;
   private
     { Private declarations }
@@ -18,7 +18,7 @@ type
   end;
 
 var
-  DataModule1: TDataModule1;
+  dmConexao: TdmConexao;
 
 implementation
 

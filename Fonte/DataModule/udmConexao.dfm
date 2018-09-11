@@ -1,4 +1,4 @@
-object DataModule1: TDataModule1
+object dmConexao: TdmConexao
   OldCreateOrder = False
   Height = 176
   Width = 263
