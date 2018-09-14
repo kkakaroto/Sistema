@@ -27,6 +27,7 @@ type
     procedure btCanelarClick(Sender: TObject);
     procedure btGravarClick(Sender: TObject);
     procedure pnlTopExit(Sender: TObject);
+    procedure Navegacao(Sender: TObject);
   private
     { Private declarations }
   public
@@ -75,6 +76,21 @@ begin
   sbAnterior.Enabled := (dsCadastro.DataSet.State = dsBrowse);
   sbProximo.Enabled := (dsCadastro.DataSet.State = dsBrowse);
   sbUltimo.Enabled := (dsCadastro.DataSet.State = dsBrowse);
+end;
+
+procedure TfrmCadPai.Navegacao(Sender: TObject);
+begin
+  if sender = sbPrimeiro then
+    fdmCadPai.Navegar(0)
+  else if sender = sbUltimo then
+    fdmCadPai.Navegar(1)
+  else if sender = sbAnterior then
+    fdmCadPai.Navegar(2)
+  else if sender = sbProximo then
+    fdmCadPai.Navegar(3);
+
+  ceAutoInc.AsInteger := fdmCadPai.Codigo;
+  pnlTopExit(pnlTop);
 end;
 
 procedure TfrmCadPai.pnlTopExit(Sender: TObject);

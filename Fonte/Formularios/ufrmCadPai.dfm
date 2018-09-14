@@ -35,24 +35,28 @@ object frmCadPai: TfrmCadPai
         Top = 4
         Width = 30
         Height = 22
+        OnClick = Navegacao
       end
       object sbAnterior: TSpeedButton
         Left = 40
         Top = 4
         Width = 30
         Height = 22
+        OnClick = Navegacao
       end
       object sbProximo: TSpeedButton
         Left = 72
         Top = 4
         Width = 30
         Height = 22
+        OnClick = Navegacao
       end
       object sbUltimo: TSpeedButton
         Left = 104
         Top = 4
         Width = 30
         Height = 22
+        OnClick = Navegacao
       end
     end
     object ceAutoInc: TJvCalcEdit

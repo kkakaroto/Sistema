@@ -12,6 +12,7 @@ object dmConexao: TdmConexao
       'Port=3054'
       'CharacterSet=ISO8859_1'
       'DriverID=FB')
+    Connected = True
     LoginPrompt = False
     Left = 48
     Top = 32
