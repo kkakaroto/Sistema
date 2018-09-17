@@ -21,9 +21,6 @@ object frmCadPai: TfrmCadPai
     Align = alTop
     TabOrder = 0
     OnExit = pnlTopExit
-    ExplicitLeft = 248
-    ExplicitTop = 72
-    ExplicitWidth = 185
     object pnlNavegacao: TPanel
       Left = 400
       Top = 4
@@ -63,7 +60,7 @@ object frmCadPai: TfrmCadPai
       Left = 8
       Top = 8
       Width = 113
-      Height = 26
+      Height = 21
       TabOrder = 1
       DecimalPlacesAlwaysShown = False
     end
@@ -112,9 +109,20 @@ object frmCadPai: TfrmCadPai
       TabOrder = 3
     end
   end
+  object pnlCenter: TPanel
+    Left = 121
+    Top = 41
+    Width = 523
+    Height = 356
+    Align = alClient
+    TabOrder = 2
+    ExplicitLeft = 368
+    ExplicitTop = 133
+    ExplicitWidth = 25
+    ExplicitHeight = 57
+  end
   object dsCadastro: TDataSource
     OnStateChange = dsCadastroStateChange
-    Left = 280
-    Top = 56
+    Left = 296
   end
 end

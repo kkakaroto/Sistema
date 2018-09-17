@@ -22,6 +22,7 @@ type
     btCanelar: TButton;
     btExcluir: TButton;
     dsCadastro: TDataSource;
+    pnlCenter: TPanel;
     procedure btIncluirClick(Sender: TObject);
     procedure dsCadastroStateChange(Sender: TObject);
     procedure btCanelarClick(Sender: TObject);

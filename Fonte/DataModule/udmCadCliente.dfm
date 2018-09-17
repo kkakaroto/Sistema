@@ -1,8 +1,15 @@
 inherited dmCadCliente: TdmCadCliente
+  OldCreateOrder = True
+  OnCreate = DataModuleCreate
   Height = 326
   Width = 437
   inherited qryCadastro: TFDQuery
-    SchemaAdapter = schadpPessoa
+    AfterInsert = qryCadastroAfterInsert
+    OnNewRecord = qryCadastroNewRecord
+    CachedUpdates = True
+    OnReconcileError = qryCadastroReconcileError
+    FetchOptions.AssignedValues = [evDetailCascade]
+    FetchOptions.DetailCascade = True
     SQL.Strings = (
       'SELECT '
       '    PESSOA.AUTOINC_PESSOA,'
@@ -38,14 +45,22 @@ inherited dmCadCliente: TdmCadCliente
         Value = Null
       end>
   end
+  object schadpPessoa: TFDSchemaAdapter
+    Left = 336
+    Top = 24
+  end
   object qryEndereco: TFDQuery
+    BeforeInsert = qryEnderecoBeforeInsert
+    BeforeEdit = qryEnderecoBeforeEdit
+    OnNewRecord = qryEnderecoNewRecord
     CachedUpdates = True
     IndexFieldNames = 'COD_PESSOA_ENDERECO'
     MasterSource = dsPessoa
     MasterFields = 'AUTOINC_PESSOA'
+    DetailFields = 'COD_PESSOA_ENDERECO'
     Connection = dmConexao.FDConnection
     SchemaAdapter = schadpPessoa
-    FetchOptions.AssignedValues = [evDetailCascade]
+    FetchOptions.AssignedValues = [evDetailCascade, evDetailServerCascade]
     FetchOptions.DetailCascade = True
     SQL.Strings = (
       'SELECT '
@@ -86,92 +101,16 @@ inherited dmCadCliente: TdmCadCliente
       end>
   end
   object qryTelefone: TFDQuery
-    IndexFieldNames = 'COD_PESSOA_TELEFONE'
-    MasterSource = dsPessoa
-    MasterFields = 'AUTOINC_PESSOA'
-    Connection = dmConexao.FDConnection
-    SchemaAdapter = schadpPessoa
-    FetchOptions.AssignedValues = [evDetailCascade]
-    FetchOptions.DetailCascade = True
-    SQL.Strings = (
-      'SELECT '
-      '    PESSOA_TELEFONE.AUTOINC_PESSOA_TELEFONE,'
-      '    PESSOA_TELEFONE.COD_PESSOA_TELEFONE,'
-      '    PESSOA_TELEFONE.NUMERO_PESSOA_TELEFONE,'
-      '    PESSOA_TELEFONE.CELULAR_PESSOA_TELEFONE,'
-      '    PESSOA_TELEFONE.OBSERVACAO_PESSOA_TELEFONE,'
-      '    PESSOA_TELEFONE.PADRAO_PESSOA_TELEFONE,'
-      '    PESSOA_TELEFONE.TIPO_PESSOA_TELEFONE,'
-      '    PESSOA_TELEFONE.INCLUSAO_PESSOA_TELEFONE,'
-      '    PESSOA_TELEFONE.ALTERACAO_PESSOA_TELEFONE,'
-      '    PESSOA_TELEFONE.USUSARIOINCLUS_PESSOA_TELEFONE,'
-      '    PESSOA_TELEFONE.USUARIOALTERA_PESSOA_TELEFONE'
-      'FROM PESSOA_TELEFONE'
-      
-        'LEFT JOIN PESSOA ON (PESSOA.AUTOINC_PESSOA = PESSOA_TELEFONE.COD' +
-        '_PESSOA_TELEFONE)'
-      
-        'WHERE PESSOA_TELEFONE.COD_PESSOA_TELEFONE = :PESSOA.AUTONINC_PES' +
-        'SOA')
     Left = 40
-    Top = 144
-    ParamData = <
-      item
-        Name = 'PESSOA.AUTONINC_PESSOA'
-        DataType = ftInteger
-        ParamType = ptInput
-        Value = Null
-      end>
+    Top = 152
   end
   object qryEmail: TFDQuery
-    IndexFieldNames = 'COD_PESSOA_EMAIL'
-    MasterSource = dsPessoa
-    MasterFields = 'AUTOINC_PESSOA'
-    Connection = dmConexao.FDConnection
-    SchemaAdapter = schadpPessoa
-    FetchOptions.AssignedValues = [evDetailCascade]
-    FetchOptions.DetailCascade = True
-    SQL.Strings = (
-      'SELECT '
-      '    PESSOA_EMAIL.AUTOINC_PESSOA_EMAIL,'
-      '    PESSOA_EMAIL.COD_PESSOA_EMAIL,'
-      '    PESSOA_EMAIL.EMAIL_PESSOA_EMAIL,'
-      '    PESSOA_EMAIL.PRINCIPAL_PESSOA_EMAIL,'
-      '    PESSOA_EMAIL.COBRANCA_PESSOA_EMAIL,'
-      '    PESSOA_EMAIL.DOCUMENTOSFISCAIS_PESSOA_EMAIL,'
-      '    PESSOA_EMAIL.PEDIDOCOMPRA_PESSOA_EMAIL,'
-      '    PESSOA_EMAIL.PEDIDOVENDA_PESSOA_EMAIL,'
-      '    PESSOA_EMAIL.MALADIRETA_PESSOA_EMAIL,'
-      '    PESSOA_EMAIL.INCLUSAO_PESSOA_EMAIL,'
-      '    PESSOA_EMAIL.ALTERACAO_PESSOA_EMAIL,'
-      '    PESSOA_EMAIL.USUARIOINCLUSAO_PESSOA_EMAIL,'
-      '    PESSOA_EMAIL.USUARIOALTERACAO_PESSOA_EMAIL'
-      'FROM PESSOA_EMAIL'
-      
-        'LEFT JOIN PESSOA ON (PESSOA.AUTOINC_PESSOA = PESSOA_EMAIL.COD_PE' +
-        'SSOA_EMAIL)'
-      'WHERE PESSOA_EMAIL.COD_PESSOA_EMAIL = :COD_PESSOA_EMAIL')
     Left = 40
-    Top = 200
-    ParamData = <
-      item
-        Name = 'COD_PESSOA_EMAIL'
-        DataType = ftInteger
-        ParamType = ptInput
-        Value = Null
-      end>
-  end
-  object FDQuery4: TFDQuery
-    Left = 128
-    Top = 88
+    Top = 216
   end
   object dsPessoa: TDataSource
     DataSet = qryCadastro
-    Left = 240
-    Top = 24
-  end
-  object schadpPessoa: TFDSchemaAdapter
-    Left = 336
+    Left = 232
     Top = 24
   end
 end
