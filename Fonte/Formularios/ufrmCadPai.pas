@@ -5,7 +5,8 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Buttons, Vcl.ExtCtrls, Vcl.StdCtrls,
-  Vcl.Mask, JvExMask, JvToolEdit, JvBaseEdits, Data.DB, udmCadPai, udmConexao;
+  Vcl.Mask, JvExMask, JvToolEdit, JvBaseEdits, Data.DB, udmCadPai, udmConexao,
+  Vcl.ComCtrls;
 
 type
   TfrmCadPai = class(TForm)
@@ -22,7 +23,6 @@ type
     btCanelar: TButton;
     btExcluir: TButton;
     dsCadastro: TDataSource;
-    pnlCenter: TPanel;
     procedure btIncluirClick(Sender: TObject);
     procedure dsCadastroStateChange(Sender: TObject);
     procedure btCanelarClick(Sender: TObject);

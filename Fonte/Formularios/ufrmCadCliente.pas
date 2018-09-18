@@ -6,16 +6,32 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, ufrmCadPai, Vcl.StdCtrls, Vcl.Mask,
   JvExMask, JvToolEdit, JvBaseEdits, Vcl.Buttons, Vcl.ExtCtrls, Data.DB,
-  Vcl.DBCtrls, udmCadCliente;
+  Vcl.DBCtrls, udmCadCliente, Vcl.ComCtrls, Vcl.Grids, Vcl.DBGrids, JvExDBGrids,
+  JvDBGrid, JvDBControls;
 
 type
   TfrmCadCliente = class(TfrmCadPai)
-    DBEdit1: TDBEdit;
-    Label1: TLabel;
-    DBEdit2: TDBEdit;
-    Label2: TLabel;
-    DBEdit3: TDBEdit;
     dsEndereco: TDataSource;
+    pcPessoa: TPageControl;
+    Label1: TLabel;
+    dbeRazaoSocial: TDBEdit;
+    Label2: TLabel;
+    dbeNomeFantasia: TDBEdit;
+    tsPrincipal: TTabSheet;
+    tsEndereco: TTabSheet;
+    TabSheet3: TTabSheet;
+    dbeEndereco: TDBEdit;
+    Label9: TLabel;
+    Label10: TLabel;
+    dbeComplemento: TDBEdit;
+    Label11: TLabel;
+    dbceCodCidade: TJvDBComboEdit;
+    dbeCidade: TDBEdit;
+    dbeUf: TDBEdit;
+    Label12: TLabel;
+    dbeNumero: TDBEdit;
+    dbeBairro: TDBEdit;
+    JvDBGrid1: TJvDBGrid;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
   private

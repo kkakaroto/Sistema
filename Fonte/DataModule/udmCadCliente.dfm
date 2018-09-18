@@ -8,8 +8,8 @@ inherited dmCadCliente: TdmCadCliente
     OnNewRecord = qryCadastroNewRecord
     CachedUpdates = True
     OnReconcileError = qryCadastroReconcileError
+    SchemaAdapter = schadpPessoa
     FetchOptions.AssignedValues = [evDetailCascade]
-    FetchOptions.DetailCascade = True
     SQL.Strings = (
       'SELECT '
       '    PESSOA.AUTOINC_PESSOA,'
@@ -82,20 +82,22 @@ inherited dmCadCliente: TdmCadCliente
       '    PESSOA_ENDERECO.USUARIOALTERA_PESSOA_ENDERECO,'
       '    PESSOA_ENDERECO.CEP_PESSOA_ENDERECO,'
       '    PESSOA_ENDERECO.PADRAO_PESSOA_ENDERECO,'
-      '    PESSOA_ENDERECO.UF_PESSOA_ENDERECO'
-      'FROM PESSOA_ENDERECO'
+      '    PESSOA_ENDERECO.UF_PESSOA_ENDERECO,'
+      '    CIDADE.DESCRICAO_CIDADE,'
+      '    UF.DESCRICAO_UF,'
+      '    UF.AUTOINC_UF'
+      'FROM PESSOA_ENDERECO '
       
-        'LEFT JOIN PESSOA ON (PESSOA.ENDERECO_PESSOA = PESSOA_ENDERECO.AU' +
-        'TOINC_PESSOA_ENDERECO)'
-      
-        'WHERE PESSOA_ENDERECO.COD_PESSOA_ENDERECO = :PESSOA.AUTONINC_PES' +
-        'SOA')
+        'left join cidade on (pessoa_endereco.cidade_pessoa_endereco = ci' +
+        'dade.AUTOINC_cidade)'
+      'left join uf on (cidade.uf_cidade = uf.AUTOINC_uf)'
+      'where PESSOA_ENDERECO.COD_PESSOA_ENDERECO = :AUTOINC_PESSOA')
     Left = 40
     Top = 88
     ParamData = <
       item
-        Name = 'PESSOA.AUTONINC_PESSOA'
-        DataType = ftInteger
+        Name = 'AUTOINC_PESSOA'
+        DataType = ftLargeint
         ParamType = ptInput
         Value = Null
       end>
